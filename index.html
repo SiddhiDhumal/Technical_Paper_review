@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical Review Paper Generator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <a href="#" onclick="window.location.href='/'" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                            alt="Workflow" />
+                        <span class="font-bold ml-2">ReviewGen</span>
+                    </a>
+                </div>
+                <div class=" hidden sm:flex sm:items-center sm:ml-6">
+                    <a href="#"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 hover:text-gray-500"
+                        onclick="window.location.href='/form'">
+                        Generate Review Paper
+                    </a>
+                    <a href="#aboutus"
+                        class="ml-4 inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 hover:text-gray-500">
+                        About
+                    </a>
+                    <a href="#contactus"
+                        class="ml-4 inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 hover:text-gray-500">
+                        Contact Us
+                    </a>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" id="menu-button"
+                        class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                        aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Heroicon name: outline/menu -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden " id="mobile-menu" aria-expanded="false">
+            <ul class="px-2 pt-2 pb-3 space-y-1 transition-all ease-in duration-500">
+                <li>
+                    <a href="#" onclick="window.location.href='/form'"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Generate
+                        Review Paper</a>
+                </li>
+                <li>
+                    <a href="#aboutus"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">About</a>
+                </li>
+                <li>
+                    <a href="#contactus"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Contact
+                        Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="bg-gray-50">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Generate Technical Review Papers with Ease
+                </h2>
+                <p class="mt-4 text-lg text-gray-500">
+                    Our platform makes it simple to create high-quality technical review papers in a fraction of the
+                    time.
+                </p>
+                <div class="mt-6">
+                    <button onclick="window.location.href='{{ url_for('form')}}'"
+                        class="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                        Generate Review Paper
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8" id="aboutus">
+            <div class="max-w-3xl mx-auto text-center">
+                <h3 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Why Choose ReviewGen?
+                </h3>
+                <p class="mt-4 text-lg text-gray-500">
+                    ReviewGen offers many benefits, including:
+                </p>
+            </div>
+            <div class="mt-10">
+                <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <!-- Heroicon name: outline/globe-alt -->
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 15a6 6 0 01-6 6H9a6 6 0 01-6-6V9a6 6 0 016-6h6m6 0a6 6 0 016 6v6m-18-2a2 2 0 012-2h2m4 0h6m2 0a2 2 0 012 2v6m-18-2V9m0-2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2h-2m-4 0h-6a2 2 0 01-2-2V9a2 2 0 012-2" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <dt class="text-lg leading-6 font-medium text-gray-900">
+                                Easy to Use
+                            </dt>
+                            <dd class="mt-2 text-base text-gray-500">
+                                Our platform is user-friendly and intuitive, making it simple to create technical review
+                                papers with
+                                ease.
+                            </dd>
+                        </div>
+                    </div>
+
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <!-- Heroicon name: outline/scale -->
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20 6L9 17l-5-5M5 11h14a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <dt class="text-lg leading-6 font-medium text-gray-900">
+                                Versatile Templates
+                            </dt>
+                            <dd class="mt-2 text-base text-gray-500">
+                                ReviewGen offers a variety of templates to choose from, so you can find the perfect one
+                                for your
+                                project.
+                            </dd>
+                        </div>
+                    </div>
+
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <!-- Heroicon name: outline/lightning-bolt -->
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <dt class="text-lg leading-6 font-medium text-gray-900">
+                                Fast and Efficient
+                            </dt>
+                            <dd class="mt-2 text-base text-gray-500">
+                                With ReviewGen, you can generate technical review papers in a fraction of the time it
+                                would take to do
+                                it manually.
+                            </dd>
+                        </div>
+                    </div>
+
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <!-- Heroicon name: outline/annotation -->
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 21l-4-4V5a2 2 0 012-2h12a2 2 0 012 2v8l-4-4m-5 5l-4 4m4-4H3" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <dt class="text-lg leading-6 font-medium text-gray-900
+                Collaboration Made Easy
+            </dt>
+            <dd class=" mt-2 text-base text-gray-500">
+                                Share your project with collaborators and work on it together in real-time.
+                                </dd>
+                        </div>
+                    </div>
+
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <!-- Heroicon name: outline/mail -->
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 6l9 6-9 6V6z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <dt class="text-lg leading-6 font-medium text-gray-900">
+                                Easy Exporting
+                            </dt>
+                            <dd class="mt-2 text-base text-gray-500">
+                                Export your technical review paper to a variety of formats including PDF, Word.
+                            </dd>
+                        </div>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- CTA Section -->
+    <div class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                        <span class="block">Start generating technical review papers</span>
+                        <span class="block text-indigo-400">with ReviewGen today.</span>
+                    </h2>
+                    <p class="mt-4 text-lg leading-6 text-gray-300">
+                        Get started today and see how ReviewGen can make technical review paper generation easier and
+                        more
+                        efficient.
+                    </p>
+                </div>
+                <div class="mt-8 lg:mt-0 lg:col-span-3 flex justify-center">
+                    <div class="rounded-md shadow">
+                        <a href="#"
+                            class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                            Get started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="body-font relative text-gray-600 " id="contactus">
+        <div class="lg:px-24 lg:py-24 px-6 py-10 ">
+            <h2 class="lg:pb-10 sm:pb-6 text-3xl mb-3 font-bold text-slate-400">
+                <span class="block">Please feel free to reach out to us using our</span>
+                <span class="block text-indigo-400">ReviewGen email provided.</span>
+            </h2>
+            <div class="overflow-hidden rounded-lg bg-indigo-200 p-4">
+                <iframe class="lg:h-96 sm:h-32 w-full" frameborder="0" title="map" scrolling="no" marginheight="0"
+                    marginwidth="0"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.2643755123813!2d72.8180197750489!3d18.963928155481543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce1486c8b1c1%3A0xb5e5277355a0e125!2ssiddhesh-deep%20co-op%20hsg!5e0!3m2!1sen!2sin!4v1682775546309!5m2!1sen!2sin"
+                    style="filter: grayscale(1) contrast(1.2) opacity(0.4);"></iframe>
+                <div class="mt-4 rounded bg-white p-4 shadow-md">
+                    <h2 class="title-font text-xs font-semibold tracking-widest text-gray-900">ADDRESS</h2>
+                    <p class="mt-1 text-sm">Sec - 04, Room No - 310, Near Vitthal Rakhumai Mandir,<br />
+                        Koperkhairane, Navi Mumbai, Maharashtra 400 709</p>
+                    <h2 class="title-font mt-4 text-xs font-semibold tracking-widest text-gray-900">EMAIL</h2>
+                    <a class="text-sm leading-relaxed text-indigo-400"
+                        href="mailto:siddhidhumal02@gmail.com">siddhidhumal02@gmail.com</a>
+                    <h2 class="title-font mt-4 text-xs font-semibold tracking-widest text-gray-900">PHONE</h2>
+                    <p class="text-sm leading-relaxed">959-486-3123</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+                <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+                        About
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+                        Contact
+                    </a>
+                </div>
+
+                <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+
+                        Privacy Policy
+                    </a>
+                </div>
+
+                <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+                        Terms of Service
+                    </a>
+                </div>
+            </nav>
+            <div class="mt-8 flex justify-center space-x-6">
+                <a href="#" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">Facebook</span>
+                    <svg fill="#007bff" height="20px" width="20px" version="1.1" id="Layer_1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 310 310" xml:space="preserve" stroke="#007bff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <g id="XMLID_834_">
+                                <path id="XMLID_835_"
+                                    d="M81.703,165.106h33.981V305c0,2.762,2.238,5,5,5h57.616c2.762,0,5-2.238,5-5V165.765h39.064 c2.54,0,4.677-1.906,4.967-4.429l5.933-51.502c0.163-1.417-0.286-2.836-1.234-3.899c-0.949-1.064-2.307-1.673-3.732-1.673h-44.996 V71.978c0-9.732,5.24-14.667,15.576-14.667c1.473,0,29.42,0,29.42,0c2.762,0,5-2.239,5-5V5.037c0-2.762-2.238-5-5-5h-40.545 C187.467,0.023,186.832,0,185.896,0c-7.035,0-31.488,1.381-50.804,19.151c-21.402,19.692-18.427,43.27-17.716,47.358v37.752H81.703 c-2.762,0-5,2.238-5,5v50.844C76.703,162.867,78.941,165.106,81.703,165.106z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+
+                <a href="#" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">Twitter</span>
+                    <svg fill="#f461ff" height="20px" width="20px" version="1.1" id="Layer_1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 300 300" xml:space="preserve" stroke="#f461ff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <g id="XMLID_504_">
+                                <path id="XMLID_505_"
+                                    d="M38.52,0.012h222.978C282.682,0.012,300,17.336,300,38.52v222.978c0,21.178-17.318,38.49-38.502,38.49 H38.52c-21.184,0-38.52-17.313-38.52-38.49V38.52C0,17.336,17.336,0.012,38.52,0.012z M218.546,33.329 c-7.438,0-13.505,6.091-13.505,13.525v32.314c0,7.437,6.067,13.514,13.505,13.514h33.903c7.426,0,13.506-6.077,13.506-13.514 V46.854c0-7.434-6.08-13.525-13.506-13.525H218.546z M266.084,126.868h-26.396c2.503,8.175,3.86,16.796,3.86,25.759 c0,49.882-41.766,90.34-93.266,90.34c-51.487,0-93.254-40.458-93.254-90.34c0-8.963,1.37-17.584,3.861-25.759H33.35v126.732 c0,6.563,5.359,11.902,11.916,11.902h208.907c6.563,0,11.911-5.339,11.911-11.902V126.868z M150.283,90.978 c-33.26,0-60.24,26.128-60.24,58.388c0,32.227,26.98,58.375,60.24,58.375c33.278,0,60.259-26.148,60.259-58.375 C210.542,117.105,183.561,90.978,150.283,90.978z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+
+                <a href="#" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">GitHub</span>
+                    <svg fill="#0084ff" height="20px" width="20px" version="1.1" id="Layer_1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 310 310" xml:space="preserve" stroke="#0084ff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <g id="XMLID_826_">
+                                <path id="XMLID_827_"
+                                    d="M302.973,57.388c-4.87,2.16-9.877,3.983-14.993,5.463c6.057-6.85,10.675-14.91,13.494-23.73 c0.632-1.977-0.023-4.141-1.648-5.434c-1.623-1.294-3.878-1.449-5.665-0.39c-10.865,6.444-22.587,11.075-34.878,13.783 c-12.381-12.098-29.197-18.983-46.581-18.983c-36.695,0-66.549,29.853-66.549,66.547c0,2.89,0.183,5.764,0.545,8.598 C101.163,99.244,58.83,76.863,29.76,41.204c-1.036-1.271-2.632-1.956-4.266-1.825c-1.635,0.128-3.104,1.05-3.93,2.467 c-5.896,10.117-9.013,21.688-9.013,33.461c0,16.035,5.725,31.249,15.838,43.137c-3.075-1.065-6.059-2.396-8.907-3.977 c-1.529-0.851-3.395-0.838-4.914,0.033c-1.52,0.871-2.473,2.473-2.513,4.224c-0.007,0.295-0.007,0.59-0.007,0.889 c0,23.935,12.882,45.484,32.577,57.229c-1.692-0.169-3.383-0.414-5.063-0.735c-1.732-0.331-3.513,0.276-4.681,1.597 c-1.17,1.32-1.557,3.16-1.018,4.84c7.29,22.76,26.059,39.501,48.749,44.605c-18.819,11.787-40.34,17.961-62.932,17.961 c-4.714,0-9.455-0.277-14.095-0.826c-2.305-0.274-4.509,1.087-5.294,3.279c-0.785,2.193,0.047,4.638,2.008,5.895 c29.023,18.609,62.582,28.445,97.047,28.445c67.754,0,110.139-31.95,133.764-58.753c29.46-33.421,46.356-77.658,46.356-121.367 c0-1.826-0.028-3.67-0.084-5.508c11.623-8.757,21.63-19.355,29.773-31.536c1.237-1.85,1.103-4.295-0.33-5.998 C307.394,57.037,305.009,56.486,302.973,57.388z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function Menu(e) {
+            let list = document.querySelector('ul');
+            e.name === 'mobile-menu' ? (e.name = 'close', list.classList.add('top-[80px]'), list.classList.add('opacity')) : (e.name = "mobile-menu", list.classList.remove('top-[80px]'))
+        }
+        $(document).ready(function () {
+            $('#menu-button').click(function () {
+                $('#mobile-menu').slideToggle(500);
+
+                $('#mobile-menu').toggleClass('hidden');
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>
